@@ -70,7 +70,7 @@ resource "aws_elasticsearch_domain" "es_vpc" {
       # produced a comprehensive set here. Consider simplifying
       # this after confirming which keys can be set in practice.
 
-      cloudwatch_log_group_arn = replace(log_publishing_options.value.cloudwatch_log_group_arn, ":*", "")
+      cloudwatch_log_group_arn = "${log_publishing_options.value.cloudwatch_log_group_arn}:*"
       enabled                  = lookup(log_publishing_options.value, "enabled", null)
       log_type                 = log_publishing_options.value.log_type
     }
